@@ -1,9 +1,8 @@
-# VFDSerial
-A Framework to control the Siemens BA63 VF Display over the serial port.
+# VFDSerial for Python3 and Russian Language
+Fork of https://github.com/CatCookie/VFDSerial framework to control the Siemens BA63 VF Display over the serial port.
 
 ## How to use
 You have to modify the display to connect to the standard RS232 and get power.
-I won' explain this here, you can find very good tutorials on Google or ask me directly.
 
 Hook up the display via a serial port (if you don't have one, get an USB-Adapter).
 Import the `vfd` module and go for it.
@@ -21,4 +20,3 @@ They may not behave as you expect.
 ## Note
 For the Raspberry PI you will need an UBS-Serial adapter cable.
 ..or you have to modify the display to accept the voltage levels of the onboard UART of the Pi.
-Feel free to ask me.

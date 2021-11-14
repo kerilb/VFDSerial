@@ -50,12 +50,13 @@ class BA63:
     def reset(self):
         """ Resets the whole display and the cursor is on the first digit. """
         self._send(constants.CLEAR)
+        self._send(constants.COUNTRY_CODE)
         self.set_position(1, 1)
         return self.cursor
 
     def _send(self, content):
         """ Send the content to the display. """
-        self.serial.write(content)
+        self.serial.write(content.encode('cp866'))
         self.serial.flush()
 
     def set_position(self, line, row):
@@ -135,7 +136,7 @@ class BA63:
             while getattr(threading.currentThread(), "do_run", True):
                 text = getattr(threading.current_thread(), "text", initial_text)
                 if wrap:
-                    chars = (text + ' ') * ((LINE_LENGTH + len(text)) / (len(text) + 1) + 1)
+                    chars = (text + ' ') * int((LINE_LENGTH + len(text)) / (len(text) + 1) + 1)
                     iteration_length = len(text)
                 else:
                     chars = ' ' * (LINE_LENGTH - 1) + text + ' ' * (LINE_LENGTH - 1)
